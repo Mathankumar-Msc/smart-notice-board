@@ -1,74 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Smart Notice Board</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      color: #00ffff;
-    }
-    .notice {
-      border: 2px solid #444;
-      margin: 20px auto;
-      padding: 15px;
-      width: 80%;
-      background-color: #111;
-      border-radius: 10px;
-      animation: fadein 1s;
-    }
-    a {
-      color: #0ff;
-    }
-    @keyframes fadein {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
-</head>
-<body>
-  <h1>📢 Smart Circular Notice Board</h1>
-  <div id="notices">Loading circulars...</div>
-
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.5.1/tabletop.min.js"></script>
-  <script>
-    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOfSu1Fl0-Bi8C2auHfyIuYvfIDMfjozqC8PxmP7Hj7jOvSoGrGGB0_00fWtJhII6ZjuR5p4jiVVjk/pubhtml';
-
-    function displayCirculars(data) {
-      const container = document.getElementById('notices');
-      container.innerHTML = '';
-
-      data.forEach(row => {
-        const notice = document.createElement('div');
-        notice.className = 'notice';
-        notice.innerHTML = `
-          <h3>${row.Title}</h3>
-          <p><strong>Date:</strong> ${row.Date}</p>
-          <p>${row.Description}</p>
-          ${row["Attachment Link"] ? `<a href="${row["Attachment Link"]}" target="_blank">View Attachment</a>` : ''}
-        `;
-        container.appendChild(notice);
-      });
-    }
-
-    function fetchData() {
-      Tabletop.init({
-        key: sheetURL,
-        callback: displayCirculars,
-        simpleSheet: true
-      });
-    }
-
-    fetchData();
-    setInterval(fetchData, 30000); // Refresh every 30 seconds
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
